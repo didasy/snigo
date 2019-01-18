@@ -6,13 +6,15 @@ import (
 )
 
 const (
-	DEFAULT_GAMMA                 = 1
-	DEFAULT_THETA                 = 1
-	DEFAULT_DETECTION_REQUIREMENT = 3
+	DefaultGamma                = 1
+	DefaultTheta                = 1
+	DefaultDetectionRequirement = 3
 )
 
 // Detect source window using positive and negative reference signals for a trend.
 // You should loop this function in your worker until detection requirement is met.
+// So if your detection requirement is 3, and this function return `true` 3 times in a row,
+// then a trend is detected.
 func Detect(sourceWindow []float64, positiveReferenceSignals, negativeReferenceSignals [][]float64, gamma float64, theta float64) bool {
 
 	negativeDistances := []float64{}
